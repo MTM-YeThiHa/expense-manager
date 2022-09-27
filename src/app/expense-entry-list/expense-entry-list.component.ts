@@ -1,12 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpenseEntry } from '../expense-entry/expense-entry.component';
+import { DebugService } from '../debug.service';
 
 @Component({
   selector: 'app-expense-entry-list',
   templateUrl: './expense-entry-list.component.html',
-  styleUrls: ['./expense-entry-list.component.scss']
+  styleUrls: ['./expense-entry-list.component.scss'],
+  providers: [DebugService]
 })
 export class ExpenseEntryListComponent implements OnInit {
+
+  title!: string;
+  expenseEntries!: ExpenseEntry[]
+  constructor(private debugService: DebugService) { } 
+ngOnInit() { 
+  this.debugService.info("Expense Entry List component initialized");
+   this.title = "Expense Entry List"; 
+   this.expenseEntries = this.getExpenseEntries(); 
+}
 
   getExpenseEntries(): ExpenseEntry[] {
     let mockExpenseEntries : ExpenseEntry[] = [
@@ -58,12 +69,8 @@ export class ExpenseEntryListComponent implements OnInit {
     ];
     return mockExpenseEntries;
   }
-  title!: string;
-  expenseEntries!: ExpenseEntry[]
-  constructor() { } 
-ngOnInit() { 
-   this.title = "Expense Entry List"; 
-   this.expenseEntries = this.getExpenseEntries(); 
-}
+
+  displayedColumns: string[] = ['item', 'amount', 'category', 'location', 'spendOn'];
+
 
 }
