@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, ObservableInput } from 'rxjs';
 import { ExpenseEntryService } from '../expense-entry.service';
 import { switchMap } from 'rxjs/operators';
  @Component({ 
@@ -19,10 +19,9 @@ export class ExpenseEntryComponent implements OnInit {
        ngOnInit() { 
           this.title = "Expense Entry"; 
        this.expenseEntry$ = this.route.paramMap.pipe( 
-          switchMap((params: any) => { 
+          switchMap((params) :ObservableInput<any> => { 
              this.selectedId = Number(params.get('id')); 
-             return 
-    this.restService.getExpenseEntry(this.selectedId); })); 
+             return this.restService.getExpenseEntry(this.selectedId); })); 
        this.expenseEntry$.subscribe( (data) => this.expenseEntry = data ); 
        } 
        goToList() { 
