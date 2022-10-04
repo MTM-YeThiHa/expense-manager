@@ -12,6 +12,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AboutComponent } from './app/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditEntryComponent } from './edit-entry/edit-entry.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     ExpenseEntryListComponent,
     DebugComponent,
     AboutComponent,
+    LoginComponent,
+    LogoutComponent,
+    EditEntryComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatButtonModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

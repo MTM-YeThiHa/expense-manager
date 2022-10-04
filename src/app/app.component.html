@@ -20,6 +20,15 @@
             <li class="nav-item"> 
                <a class="nav-link" href="#">About</a> 
             </li> 
+            <li class="nav-item">
+               <div *ngIf="isUserLoggedIn; else is LogOut">
+                  <a class="nav-link" routerLink="/logout">LogOut</a>
+               </div>
+
+               <ng-template #isLogOut>
+                  <a class="nav-link" routerLink="/login">Login</a>
+               </ng-template>
+            </li>
          </ul> 
       </div> 
    </div> 
